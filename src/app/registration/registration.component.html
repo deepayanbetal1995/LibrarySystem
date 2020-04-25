@@ -1,0 +1,86 @@
+<div class="container">
+
+  <form [formGroup]="RegistrationForm" class="form-horizontal" (ngSubmit)="onSubmit()" >
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-titel">Create User</h3>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="form-group" [ngClass]="{'has-error':RegistrationForm.get('firstName').errors &&
+      (RegistrationForm.get('firstName').touched || RegistrationForm.get('firstName').dirty)}">
+        <label class="col-sm-2 control-label" for="firstName">First Name</label>
+
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="firstName" >
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Middle Name</label>
+
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="middleName">
+        </div>
+      </div>
+
+
+      <div class="form-group" [ngClass]="{'has-error':RegistrationForm.get('lastName').errors && 
+    (RegistrationForm.get('lastName').touched || RegistrationForm.get('lastName').dirty)}">
+        <label class="col-sm-2 control-label">Last Name</label>
+
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="lastName">
+        </div>
+      </div>
+
+
+      <div class="form-group" [ngClass]="{'has-error':RegistrationForm.get('email').errors &&
+      (RegistrationForm.get('email').touched || RegistrationForm.get('email').dirty)}">
+        <label class="col-sm-2 control-label">Email</label>
+
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="email" >
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Password</label>
+
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="password">
+        </div>
+      </div>
+
+
+      <div class="form-group" >
+        <label class="col-sm-2 control-label">Confirm Password</label>
+
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="confPassword" appConfirmEquqlValidator="password">
+        </div>
+      </div>
+      <span class="help-block" *ngIf="RegistrationForm.get('confPassword').touched && RegistrationForm.get('confPassword').errors.notEqual">Password not matched</span>
+
+      <div class="panel-footer">
+        <div  class="btn-toolbar ">
+            <button class="btn btn-primary text-center" type="submit" [disabled]="!RegistrationForm.dirty">Save</button>
+            <div class="pl-5">
+              <a routerLinkActive="active"  (click)="onClickLogin()" routerLink="list">Already Registered Click to Login</a>
+            </div>
+            
+            <!-- <button class="btn btn-primary" type="button" (click)="onLoadDataClick()">Load Data</button> -->
+         </div>
+    </div>
+
+
+    </div>
+  </form>
+
+
+
+
+
+</div>
